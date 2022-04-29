@@ -46,7 +46,7 @@ spec:
         resources:
           requests:
               cpu: 1000m
-              memory: 128Mi
+              memory: 130Mi
         securityContext:
           privileged: false
         terminationMessagePath: /dev/termination-log
