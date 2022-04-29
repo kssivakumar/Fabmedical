@@ -8,7 +8,7 @@ on:
     paths:
     - 'content-web/**'
     - web.deployment.yaml
-    - web.service.yaml
+    - web.services.yaml
 
   # Configure workflow to also support triggering manually
   workflow_dispatch:
@@ -74,7 +74,7 @@ jobs:
       with:
          manifests: |
            web.deployment.yaml
-           web.service.yaml
+           web.services.yaml
          images: |
            ${{ env.containerRegistry }}.azurecr.io/${{ env.imageRepository }}:${{ env.tag }}
          imagepullsecrets: |
