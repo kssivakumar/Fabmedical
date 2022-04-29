@@ -16,7 +16,7 @@ on:
 # Environment variables are defined so that they can be used throughout the job definitions.
 env:
   imageRepository: 'content-api'
-  resourceGroupName: 'Fabmedical-599082'
+  resourceGroupName: 'fabmedical-599082'
   clusterName: 'fabmedical-599082'
   containerRegistryName: 'fabmedical599082'
   containerRegistry: 'fabmedical599082.azurecr.io'
