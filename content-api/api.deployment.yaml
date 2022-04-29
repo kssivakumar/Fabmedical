@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: web
-  name: web
+      app: api
+  name: api
   namespace: ingress-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web
+      app: api
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -18,32 +18,35 @@ spec:
   template:
     metadata:
       labels:
-        app: web
-      name: web
+          app: api
+      name: api
     spec:
       containers:
-      - image: fabmedical599082.azurecr.io/content-web
+      - image: fabmedical599082.azurecr.io/content-api
         env:
-          - name: CONTENT_API_URL
-            value: http://api:3001
+          - name: MONGODB_CONNECTION
+            valueFrom:
+              secretKeyRef:
+                name: cosmosdb
+                key: db
+        name: api
+        imagePullPolicy: Always
         livenessProbe:
           httpGet:
-            path: /
-            port: 3000
+              path: /
+              port: 3001
           initialDelaySeconds: 30
           periodSeconds: 20
           timeoutSeconds: 10
           failureThreshold: 3
-        imagePullPolicy: Always
-        name: web
         ports:
-          - containerPort: 3000
-            hostPort: 80
+          - containerPort: 3001
+            hostPort: 3001
             protocol: TCP
         resources:
           requests:
-            cpu: 1000m
-            memory: 128Mi
+              cpu: 1000m
+              memory: 128Mi
         securityContext:
           privileged: false
         terminationMessagePath: /dev/termination-log

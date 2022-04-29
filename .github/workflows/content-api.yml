@@ -7,7 +7,7 @@ on:
     - main
     paths:
     - 'content-api/**'
-    - api.deployment.yml
+    - api.deployment.yaml
     - api.service.yml
 
   # Configure workflow to also support triggering manually
