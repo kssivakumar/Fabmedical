@@ -7,8 +7,8 @@ on:
     - main
     paths:
     - 'content-web/**'
-  #  - web.deployment.yaml
-  #  - web.services.yaml
+    - web.deployment.yaml
+    - web.services.yaml
 
   # Configure workflow to also support triggering manually
   workflow_dispatch:
